@@ -2,6 +2,7 @@ package com.example.perfilacademico.ui
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,7 +23,7 @@ class SubirUniversidadFragment : DialogFragment() {
 
     //Generación del código de cada institución
     private val letras = ('a'..'z') + ('A'..'Z') + ('0'..'9')
-    private val codigo by lazy { generarCodigo() }
+    private var codigo = generarCodigo()
 
     //Variables
     private lateinit var subir: Button
@@ -75,5 +76,11 @@ class SubirUniversidadFragment : DialogFragment() {
         descartar = view.findViewById(R.id.descartarUniversidadBTN)
         nombre = view.findViewById(R.id.nombreNuevaUniversidad)
         direccion = view.findViewById(R.id.direccionNuevaUniversidad)
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+
+        codigo = generarCodigo()
     }
 }
