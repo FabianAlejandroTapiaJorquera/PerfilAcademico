@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "144144606259",
+    "firebase_url": "https://perfilacademico-4bfc1.firebaseio.com",
+    "project_id": "perfilacademico-4bfc1",
+    "storage_bucket": "perfilacademico-4bfc1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144144606259:android:fc7f006801e18466a86f46",
+        "android_client_info": {
+          "package_name": "com.example.perfilacademico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "144144606259-n4kars7c6nun2qitjbtqmpgiupppm6aa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCndIWNY-Fn-W5vogBiKZIcEDqUlTmsZSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "144144606259-n4kars7c6nun2qitjbtqmpgiupppm6aa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
