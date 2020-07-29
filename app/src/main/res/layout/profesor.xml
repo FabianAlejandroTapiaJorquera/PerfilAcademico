@@ -5,161 +5,241 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            app:cardBackgroundColor="@color/colorNegroAzuladoFondo"
+            app:cardCornerRadius="35dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            app:cardBackgroundColor="@color/colorNegroAzuladoSombra"
+            app:cardCornerRadius="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
             app:cardBackgroundColor="@color/colorNegroAzulado"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    app:cardBackgroundColor="@color/colorMorado">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            app:cardCornerRadius="50dp">
-
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                android:id="@+id/universidadLogoPF"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:layout_gravity="center_vertical"
-                                android:src="@drawable/perfil"
-                                app:civ_border_color="#FF000000"
-                                app:civ_border_width="2dp" />
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:id="@+id/nombreProfesor"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_weight="1"
-                            android:textColor="#ffffff"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            tools:text="Nombre de el profesor que se ha seleccionada" />
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/infoProfesor"
-                    android:layout_width="match_parent"
+                    android:id="@+id/notaProfesor"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textColor="#ffffff"
-                    android:text="Información Acádemica"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"/>
-
-                <TextView
-                    android:id="@+id/universidadesProfesor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textColor="#ffffff"
-                    tools:text="Universidades: Utem, Usach, U de Chile, U Catolica, U San Antonio"
-                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:text="Nota: 0.0"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.015"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/resultadosProfesor"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <ImageButton
+                    android:id="@+id/editarProfesor"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@color/colorTransparente"
+                    android:backgroundTint="#FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/opciones" />
+
+                <TextView
+                    android:id="@+id/nombreProfesor"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="35dp"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Nombre del docente" />
 
                 <TextView
                     android:id="@+id/asignaturasProfesor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textColor="#ffffff"
-                    tools:text="Asignaturas: Cálculo 1, Cálculo 2, Cálculo Diferencial, Ingles"
-                    android:layout_marginTop="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"/>
+                    android:layout_marginEnd="5dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nombreProfesor"
+                    app:layout_constraintVertical_bias="0.19"
+                    tools:text="Asignaturas: Cálculo 1, Cálculo 2, Cálculo Diferencial, Ingles" />
 
                 <TextView
                     android:id="@+id/resultadosProfesor"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textColor="#ffffff"
-                    android:text="Resultados"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="5dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp">
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nota: 0.0"
-                        android:textSize="20dp"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="40dp"/>
-
-                    <com.github.mikephil.charting.charts.PieChart
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_marginStart="70dp">
-
-                    </com.github.mikephil.charting.charts.PieChart>
-                </LinearLayout>
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="Resultados:"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/asignaturasProfesor" />
 
                 <TextView
-                    android:id="@+id/comentariosProfesor"
-                    android:layout_width="match_parent"
+                    android:id="@+id/aprobados"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Comentarios"
-                    android:textSize="20dp"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="5dp"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="5dp"
+                    android:text="Aprobados"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/reprobados"
+                    app:layout_constraintHorizontal_bias="0.312"
+                    app:layout_constraintStart_toEndOf="@+id/resultadosProfesor"
+                    app:layout_constraintTop_toBottomOf="@+id/asignaturasProfesor"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/reprobados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="60dp"
+                    android:text="Reprobados"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/asignaturasProfesor" />
+
+                <TextView
+                    android:id="@+id/aprobadosProfesor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"/>
-            </LinearLayout>
+                    android:layout_marginTop="5dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toStartOf="@+id/reprobados"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/aprobados"
+                    app:layout_constraintTop_toBottomOf="@+id/asignaturasProfesor"
+                    tools:text="0" />
+
+                <TextView
+                    android:id="@+id/reprobadosProfesor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/reprobados"
+                    app:layout_constraintTop_toBottomOf="@+id/asignaturasProfesor"
+                    tools:text="0" />
+
+                <TextView
+                    android:id="@+id/aprobadosProfesorPorcentual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.38"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aprobados"
+                    tools:text="25%" />
+
+                <TextView
+                    android:id="@+id/reprobadosProfesorPorcentual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.762"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reprobados"
+                    tools:text="75%" />
+
+                <ImageButton
+                    android:id="@+id/comentariosProfesor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorTransparente"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/comentarios" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
-    </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            app:cardCornerRadius="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/universidadFotoPerfil"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/perfil"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

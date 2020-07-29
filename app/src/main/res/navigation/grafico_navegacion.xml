@@ -16,11 +16,16 @@
     </fragment>
     <fragment
         android:id="@+id/perfilUniversidadFragment"
-        android:name="com.example.perfilacademico.PerfilUniversidadFragment"
+        android:name="com.example.perfilacademico.ui.PerfilUniversidadFragment"
         android:label="fragment_perfil_universidad"
         tools:layout="@layout/fragment_perfil_universidad" >
         <action
-            android:id="@+id/action_perfilUniversidadFragment_to_inicioFragment"
-            app:destination="@id/inicioFragment" />
+            android:id="@+id/action_perfilUniversidadFragment_to_perfilEditarFragment"
+            app:destination="@id/perfilEditarFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/perfilEditarFragment"
+        android:name="com.example.perfilacademico.ui.PerfilEditarFragment"
+        android:label="fragment_perfil_editar"
+        tools:layout="@layout/fragment_perfil_editar" />
 </navigation>

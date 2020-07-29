@@ -1,7 +1,6 @@
 package com.example.perfilacademico.repositorios.recycler.view.adapters
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +39,7 @@ class UniversidadAdapter(private val context: Context,
         //Función para rellenar los elementos de cada layout del recyclerView
         fun llenarRecycler(universidad: Universidad) {
             itemView.setOnClickListener { itemClickListener.OnItemClick(universidad) }
-            itemView.nombreUniversidad.text = universidad.nombre
+            itemView.universidadNombre.text = universidad.nombre
             itemView.direccionUniversidad.text = universidad.direccion
             if(universidad.logo != "")
                 Glide.with(context).load(universidad.logo).into(itemView.universidadLogo)
