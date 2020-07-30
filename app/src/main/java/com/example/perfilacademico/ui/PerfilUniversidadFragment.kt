@@ -7,12 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.perfilacademico.Profesor
 import com.example.perfilacademico.R
 import com.example.perfilacademico.Universidad
 import com.example.perfilacademico.repositorios.recycler.view.adapters.ProfesorAdapter
+import com.example.perfilacademico.repositorios.recycler.view.adapters.UniversidadAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import kotlinx.android.synthetic.main.fragment_inicio.*
 import kotlinx.android.synthetic.main.fragment_perfil_editar.*
 import kotlinx.android.synthetic.main.fragment_perfil_universidad.*
 import kotlinx.android.synthetic.main.fragment_perfil_universidad.universidadFotoPerfil
@@ -22,10 +27,15 @@ class PerfilUniversidadFragment : Fragment() {
     //Firestore
     private val referencia by lazy { FirebaseFirestore.getInstance().collection("universidades") }
     private lateinit var listener: ListenerRegistration
+    //Query de búsqueda en firestore
+    val query = FirebaseFirestore.getInstance().collection("profesores")
+    var options: FirestoreRecyclerOptions<Profesor> = FirestoreRecyclerOptions.Builder<Profesor>()
+        .setQuery(query, Profesor::class.java)
+        .build()
 
     //Variable global
     private var universidad: Array<String>? = null
-    private lateinit var profesorAdapter: ProfesorAdapter
+    private val profesorAdapter by lazy { ProfesorAdapter(requireContext(), options) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +58,13 @@ class PerfilUniversidadFragment : Fragment() {
 
         //Funciones
         setearVista()
+        setRecyclerView()
         editarPerfil()
+    }
+
+    fun setRecyclerView(){
+        contenedorProfesores.layoutManager = LinearLayoutManager(context)
+        contenedorProfesores.adapter = profesorAdapter
     }
 
     fun setearVista(){
@@ -75,8 +91,13 @@ class PerfilUniversidadFragment : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        profesorAdapter.startListening()
+    }
     override fun onStop() {
         super.onStop()
+        profesorAdapter.stopListening()
         listener.remove()
     }
 }

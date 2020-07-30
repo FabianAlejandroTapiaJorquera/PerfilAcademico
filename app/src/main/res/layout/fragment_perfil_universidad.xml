@@ -93,4 +93,127 @@
             app:civ_border_width="2dp" />
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView6"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="@color/colorNegroAzulado"
+        app:cardCornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView5"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ProfesorHeader"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Profesor"
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/notaProfesorHeader"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="N"
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/aprobadosProfesorHeader"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="A"
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/reprobadosProfesorHeader"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="R"
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/asignaturasProfesorHeader"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="AS"
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/totalAlumnosProfesorHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="TA"
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contenedorProfesores"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView6"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
