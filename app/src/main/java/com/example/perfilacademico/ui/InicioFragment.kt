@@ -122,6 +122,7 @@ class InicioFragment : Fragment(), UniversidadAdapter.OnUniversidadClickListener
         bundle.putStringArray("universidad", array)
         findNavController().navigate(R.id.perfilUniversidadFragment, bundle)
     }
+
     override fun onStart() {
         super.onStart()
         universidadAdapter.startListening()

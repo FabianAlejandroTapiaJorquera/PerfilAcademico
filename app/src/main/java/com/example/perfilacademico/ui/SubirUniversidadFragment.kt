@@ -61,10 +61,20 @@ class SubirUniversidadFragment : DialogFragment() {
     fun funcionalidadBotones(){
         //Acciones a ejecutarse al tocar en los botones
         subir.setOnClickListener {
-            val subir = BaseDatosUniversidad(SubirUniversidad(Universidad(nombre.text.toString(), codigo, direccion.text.toString(), "", nombre.text.toString().toLowerCase())))
-            subir.agregarUniversidad()
-            Toast.makeText(requireContext(), "Se ha agredado una nueva institución", Toast.LENGTH_SHORT).show()
-            dismiss()
+            if(nombre.text.toString() == "")
+                Toast.makeText(requireContext(), "Debes escribir el nombre de la institución", Toast.LENGTH_SHORT).show()
+            else if(direccion.text.toString() == "")
+                Toast.makeText(requireContext(), "Debes escribir la dirección de la institución", Toast.LENGTH_SHORT).show()
+            else {
+                val subir = BaseDatosUniversidad(SubirUniversidad(Universidad(nombre.text.toString(), codigo, direccion.text.toString(), "", nombre.text.toString().toLowerCase())))
+                subir.agregarUniversidad()
+                Toast.makeText(
+                    requireContext(),
+                    "Se ha agredado una nueva institución",
+                    Toast.LENGTH_SHORT
+                ).show()
+                dismiss()
+            }
         }
         descartar.setOnClickListener {
             Toast.makeText(requireContext(), "Se descartaron los datos", Toast.LENGTH_SHORT).show()

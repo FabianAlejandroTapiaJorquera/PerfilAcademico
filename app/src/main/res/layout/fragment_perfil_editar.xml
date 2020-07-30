@@ -116,4 +116,47 @@
         android:src="@drawable/editar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreUniversidadEditar" />
+
+    <Button
+        android:id="@+id/eliminarUniversidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Eliminar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/direccionUniversidadEditar"
+        android:backgroundTint="@color/colorRojo"/>
+
+    <EditText
+        android:id="@+id/confirmacionEliminar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Escribe el nombre para borrar el perfil"
+        android:textSize="17dp"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/okEliminar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eliminarUniversidad"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/okEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="confirmar"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eliminarUniversidad"
+        android:backgroundTint="@color/colorRojo"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

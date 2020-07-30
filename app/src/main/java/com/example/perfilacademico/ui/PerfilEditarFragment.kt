@@ -1,13 +1,16 @@
 package com.example.perfilacademico.ui
 
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import com.bumptech.glide.Glide
 import com.example.perfilacademico.R
 import com.example.perfilacademico.Universidad
@@ -16,6 +19,7 @@ import com.example.perfilacademico.repositorios.subir.SubirUniversidad
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.activity_host.*
 import kotlinx.android.synthetic.main.fragment_perfil_editar.*
 
 class PerfilEditarFragment : Fragment() {
@@ -53,6 +57,7 @@ class PerfilEditarFragment : Fragment() {
         setearVista()
         editarLogoUniversidad()
         editarDatosUniversidad()
+        eliminarUniversidad()
     }
     fun setearVista(){
         //Obteniendo información en tiempo real desde Firestore
@@ -80,18 +85,52 @@ class PerfilEditarFragment : Fragment() {
     fun editarDatosUniversidad(){
         val bundle = Bundle()
         editarNombreUniversidad.setOnClickListener {
-            val array = arrayOf(nombreUniversidadEditar.text.toString(),universidad!![1], universidad!![2], universidad!![3], universidad!![4], "nombre")
+            val array = arrayOf(nombreUniversidadEditar.text.toString(),universidad!![1], direccionUniversidadEditar.text.toString(), universidad!![3], nombreUniversidadEditar.text.toString().toLowerCase(), "nombre")
             bundle.putStringArray("universidad",array)
             editarDialog.arguments = bundle
             editarDialog.show(parentFragmentManager, "Editar Nombre")
         }
         editarDireccionUniversidad.setOnClickListener {
-            val array = arrayOf(universidad!![0], universidad!![1], direccionUniversidadEditar.text.toString(), universidad!![3], universidad!![4], "direccion")
+            val array = arrayOf(nombreUniversidadEditar.text.toString(), universidad!![1], direccionUniversidadEditar.text.toString(), universidad!![3], nombreUniversidadEditar.text.toString().toLowerCase(), "direccion")
             bundle.putStringArray("universidad",array)
             editarDialog.arguments = bundle
             editarDialog.show(parentFragmentManager, "Editar Direccion")
         }
     }
+    fun eliminarUniversidad(){
+        eliminarUniversidad.setOnClickListener {
+            confirmacionEliminar.visibility = View.VISIBLE
+            okEliminar.visibility = View.VISIBLE
+        }
+        okEliminar.setOnClickListener {
+            if(confirmacionEliminar.text.toString() != nombreUniversidadEditar.text.toString())
+                Toast.makeText(requireContext(), "No se han Borrado los datos", Toast.LENGTH_SHORT).show()
+            else{
+                val fragment = InicioFragment()
+                referencia.document(universidad!![1]).delete()
+                parentFragmentManager.popBackStack()
+                parentFragmentManager.popBackStack()
+                parentFragmentManager.beginTransaction().add(R.id.fragment, fragment).commit()
+                requireView().cerrarTeclado()
+            }
+        }
+    }
+
+    fun actualizarUI(url: String){
+        val fragment = PerfilEditarFragment()
+        val array = universidad!!
+        array[3] = url
+        val bundle = Bundle()
+        bundle.putStringArray("universidad", array)
+        fragment.arguments = bundle
+        parentFragmentManager.beginTransaction().remove(this).replace(R.id.fragment, fragment).commit()
+    }
+
+    fun View.cerrarTeclado(){
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -102,9 +141,12 @@ class PerfilEditarFragment : Fragment() {
             referencia.putFile(uri!!).addOnSuccessListener {
                 referencia.downloadUrl.addOnCompleteListener {
                     url = it.result.toString()
-                    val nuevaImagen = BaseDatosUniversidad(SubirUniversidad(Universidad(universidad!![0], universidad!![1], universidad!![2], url, universidad!![4])))
+                    val nuevaImagen = BaseDatosUniversidad(SubirUniversidad(Universidad(nombreUniversidadEditar.text.toString(), universidad!![1], direccionUniversidadEditar.text.toString(), url, nombreUniversidadEditar.text.toString().toLowerCase())))
                     nuevaImagen.agregarUniversidad()
                     Glide.with(this).load(url).into(universidadFotoPerfil)
+
+                    //Actualizando el bundle de la UI
+                    actualizarUI(url)
                 }
             }
         }
@@ -114,4 +156,5 @@ class PerfilEditarFragment : Fragment() {
         super.onStop()
         listener.remove()
     }
+
 }

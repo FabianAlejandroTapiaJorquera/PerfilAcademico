@@ -86,5 +86,4 @@ class EditarDatosFragment : DialogFragment() {
             dismiss()
         }
     }
-
 }
